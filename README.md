@@ -15,8 +15,7 @@ so I created [a fork](https://github.com/AtefR/filament-tenancy) and made the ne
 
 2. Install composer and npm packages
     `
-        composer install
-        npm install && npm run build
+        composer install && npm install && npm run build
     `
 
 3. create the .env using this command.
