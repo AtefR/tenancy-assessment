@@ -18,10 +18,22 @@ class CreateTenantsTable extends Migration
         Schema::create('tenants', function (Blueprint $table) {
             $table->string('id')->primary();
 
-            // your custom columns may go here
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+
+            //Login
+            $table->string('password')->nullable();
+
+            //OTP
+            $table->string('otp_code')->nullable();
+            $table->timestamp('otp_code_active_at')->nullable();
+
+            $table->boolean('is_active')->default(1)->nullable();
+
+            $table->json('data')->nullable();
 
             $table->timestamps();
-            $table->json('data')->nullable();
         });
     }
 

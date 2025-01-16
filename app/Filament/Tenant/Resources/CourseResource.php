@@ -3,6 +3,7 @@
 namespace App\Filament\Tenant\Resources;
 
 use App\Filament\Resources\CourseResource\Pages;
+use App\Filament\Tenant\Resources\CourseResource\RelationManagers\UsersRelationManager;
 use App\Models\Course;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\TextInput;
@@ -36,14 +37,6 @@ class CourseResource extends Resource
 
                 TextInput::make('description')
                     ->required(),
-
-                Placeholder::make('created_at')
-                    ->label('Created Date')
-                    ->content(fn(?Course $record): string => $record?->created_at?->diffForHumans() ?? '-'),
-
-                Placeholder::make('updated_at')
-                    ->label('Last Modified Date')
-                    ->content(fn(?Course $record): string => $record?->updated_at?->diffForHumans() ?? '-'),
             ]);
     }
 
@@ -85,5 +78,12 @@ class CourseResource extends Resource
     public static function getGloballySearchableAttributes(): array
     {
         return ['name'];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            UsersRelationManager::class,
+        ];
     }
 }

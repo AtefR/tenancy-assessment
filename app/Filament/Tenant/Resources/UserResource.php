@@ -2,6 +2,7 @@
 
 namespace App\Filament\Tenant\Resources;
 
+use App\Filament\Tenant\Resources\UserResource\RelationManagers\CoursesRelationManager;
 use App\Models\User;
 use App\Providers\Filament\Tenant\Resources\UserResource\Pages;
 use Filament\Forms\Components\TextInput;
@@ -82,5 +83,12 @@ class UserResource extends Resource
     public static function getGloballySearchableAttributes(): array
     {
         return ['name', 'email'];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            CoursesRelationManager::class,
+        ];
     }
 }
