@@ -37,3 +37,6 @@ default admin credentials are:
     email: admin@test.test
     password: password
 
+after creating tenants courses can be seeded using this command:
+
+`php artisan db:seed --class=CoursesSeeder`
